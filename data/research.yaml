@@ -1,0 +1,59 @@
+areas:
+  - title: "Image & Video Processing"
+    icon: "image_search"
+    shortDescription: "Super-resolution, denoising, and HDR reconstruction"
+    description: "Fundamental research into the representation and manipulation of multi-dimensional signals. Development of algorithms for super-resolution, denoising, and HDR reconstruction, focusing on computational efficiency and visual fidelity for real-time applications."
+    topics:
+      - "Multi-scale Analysis"
+      - "Signal Restoration"
+      - "Sparse Coding"
+
+  - title: "Digital Image Forensics"
+    icon: "policy"
+    shortDescription: "Manipulation detection and authenticity verification"
+    description: "Investigating methods to verify the authenticity of digital media. Including camera source identification, detection of copy-move and splicing manipulations, and deepfake analysis using physiological signals and GAN-fingerprint detection."
+    topics:
+      - "Copy-Move Forgery Detection"
+      - "Deepfake Verification"
+      - "Manipulation Detection"
+    tools:
+      - name: "SBU-CM16 Database"
+        description: "Copy-move forgery detection database"
+        code: "https://www.dropbox.com/sh/fj3ls9osx5syhcp/AAD1dtuBzAiiXjlyusuFUHmaa?dl=0"
+
+  - title: "Digital Watermarking"
+    icon: "branding_watermark"
+    shortDescription: "Copyright protection and content integrity"
+    description: "Developing robust and fragile watermarking schemes for copyright protection and content integrity. Specializing in blind extraction techniques and spread-spectrum embedding that withstands common compression and geometric attacks."
+    topics:
+      - "Reversible Watermarking"
+      - "Compressed Domain Watermarking"
+      - "Blind Extraction"
+
+  - title: "Image & Video Quality Assessment"
+    icon: "high_quality"
+    shortDescription: "Objective quality metrics (IQA/VQA)"
+    description: "Modeling the Human Visual System (HVS) to objectively measure the perceptual quality of images and videos. Focus on Full-Reference and No-Reference metrics that correlate strongly with subjective MOS."
+    topics:
+      - "Full-Reference IQA"
+      - "No-Reference IQA"
+      - "Screen Content Quality"
+    tools:
+      - name: "SSVD Metric"
+        subtitle: "Structural SVD-Based Image Quality Assessment"
+        description: "An objective metric for screen content image quality assessment based on structural features and spectral domain changes."
+        code: "codes/SSVD.m"
+      - name: "WS-HV Metric"
+        subtitle: "Weighted Sum of HVS-based Variation"
+        description: "A robust quality assessment tool designed for video sequences under complex distortion environments."
+        code: "https://github.com/cheraaqee/IQA_Lab/tree/main/IQA/Full_Reference/train_free/methods/WS_HV"
+
+  - title: "Video Analysis"
+    icon: "smart_display"
+    shortDescription: "Human action recognition and temporal modeling"
+    description: "High-level semantic interpretation of temporal data. Main focus on Human Action Recognition (HAR) using 3D-CNNs and attention-based Transformers to model complex temporal dynamics for surveillance and healthcare applications."
+    topics:
+      - "Human Action Recognition"
+      - "Temporal Modeling"
+      - "Spatio-temporal Attention"
+      - "3D Graph CNNs"

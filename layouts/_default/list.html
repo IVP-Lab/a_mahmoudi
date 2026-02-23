@@ -1,0 +1,18 @@
+{{ define "main" }}
+<main class="max-w-[1200px] mx-auto px-4 md:px-10 lg:px-20 py-8 md:py-16">
+    <h1 class="text-4xl font-black tracking-tight text-[#111418] mb-8">{{ .Title }}</h1>
+    
+    {{ .Content }}
+    
+    <div class="space-y-4 mt-8">
+        {{ range .Pages }}
+        <div class="p-4 rounded-xl bg-white border border-[#e5e7eb] hover:shadow-lg transition-all">
+            <a href="{{ .Permalink }}" class="text-lg font-bold text-[#111418] hover:text-primary">{{ .Title }}</a>
+            {{ with .Summary }}
+            <p class="text-sm text-gray-500 mt-2">{{ . | truncate 150 }}</p>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</main>
+{{ end }}

@@ -1,0 +1,151 @@
+function SSVD=SSVD_v3(RefImg,DstImg,BlkSiz,Ths)
+
+% SSVD computes the perceptual similarity index of two images based on
+% structural information extracted based on singular value decomposition.
+%Input:
+%      RefImg: Grayscale refrence image
+%      DstImg: Grayscale distorted image
+
+% Please refer to the following paper:
+%   A. Mansouri and A. Mahmoudi-Aznaveh, 
+%  "SSVD: Structural SVD-based image quality assessment," 
+% Signal Processing: Image Communication, vol. 74, pp. 54-63, 2019.
+% last modifed: 31 Jan 2020
+
+if nargin < 3
+    BlkSiz = 9;
+end
+if nargin < 4
+    Ths = .75;
+end
+
+if ndims(RefImg) == 3
+    disp('input images should be converted to grayscale!');
+end
+
+RefImg=double((RefImg));  
+DstImg=double((DstImg));  
+
+%% Downsampling
+[RefImg, DstImg] = DSample(RefImg, DstImg);
+[Dx , Dy] = size(RefImg);
+
+Dxx=size(RefImg,1)+mod(BlkSiz-mod(size(RefImg,1),BlkSiz),BlkSiz);
+Dyy=size(RefImg,2)+mod(BlkSiz-mod(size(RefImg,2),BlkSiz),BlkSiz);
+%Dxx and Dyy: Image size after padding
+Ref=zeros(Dxx,Dyy);
+Ref(1:Dx,1:Dy)=RefImg;
+Dst=zeros(Dxx,Dyy);
+Dst(1:Dx,1:Dy)=DstImg;
+
+%%
+RefBlks = im2col(Ref , [BlkSiz BlkSiz],'distinct');
+DstBlks =  im2col(Dst , [BlkSiz BlkSiz],'distinct');
+
+NoB = size(RefBlks,2); %Number of Blocks
+for k=1:NoB
+    RefBlk = reshape(RefBlks(: , k) , [BlkSiz BlkSiz]);
+    DstBlk = reshape(DstBlks(: , k) , [BlkSiz BlkSiz]);
+    [FS(k) FL(k)  FR(k)] = SSVD_Ftr(RefBlk , DstBlk,Ths);  
+end
+%%
+SSVD=sum(FS.*FL.*FR)/(NoB); % equation (20)
+%%
+function [Y1, Y2] = DSample(imageRef, imageDis)
+[rows, cols] = size(imageRef);
+Y1 = double(imageRef);
+Y2 = double(imageDis);
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Downsample the image
+%%%%%%%%%%%%%%%%%%%%%%%%%
+minDimension = min(rows,cols);
+F = max(1,round(minDimension / 256));
+aveKernel = fspecial('average',F);
+aveY1 = conv2(Y1, aveKernel,'same');
+aveY2 = conv2(Y2, aveKernel,'same');
+Y1 = aveY1(1:F:rows,1:F:cols);
+Y2 = aveY2(1:F:rows,1:F:cols);
+%%
+function [FS FL  FR]=SSVD_Ftr(RefBlk,DstBlk,th)
+Zt=10^(-10); %Less than this value is considered as zero
+
+[Dx Dy]=size(RefBlk);
+[U S V]=svd(RefBlk);
+S=diag(S)';
+
+U_hat=zeros(Dx);
+for k=1:Dx
+    S_hat_U(k)=norm(DstBlk*V(:,k));
+    if(S_hat_U(k)>Zt)
+        U_hat(:,k)=DstBlk*V(:,k)./S_hat_U(k);
+    else
+        U_hat(:,k)=0;
+    end
+end
+
+V_hat=zeros(Dy);
+for k=1:Dx
+    S_hat_V(k)=norm(DstBlk'*U(:,k));
+    if(S_hat_V(k)>Zt)
+        V_hat(:,k)=DstBlk'*U(:,k)./S_hat_V(k);
+    else
+        V_hat(:,k)=0;
+    end
+end
+
+S_V=svd(V_hat*V');
+S_U=svd(U_hat*U');
+
+%%
+NoS=sum(S>10.^(-10)); %Number of Singular Values based on eq(6)
+
+if sum(S)>0
+    W=S./(sum(S));
+else
+    W=zeros(size(S));  %eq(7)
+end
+
+Dif_U=abs(S-S_hat_U);
+Dif_V=abs(S-S_hat_V);
+DF=(Dif_U+Dif_V);
+
+CdfS=(cumsum(DF));
+if sum(DF)>0
+    ThVe=(CdfS./(sum(DF)));
+else
+    ThVe=zeros(size(CdfS));
+end
+CPF= find((ThVe)>th,1);
+if isempty(CPF)
+    CPF=NoS;
+end
+%%
+
+F_SV=(sqrt(sum(((S_V(1:CPF)-1).*W(1:CPF)').^2)));
+F_SU=(sqrt(sum(((S_U(1:CPF)-1).*W(1:CPF)').^2)));
+
+FS=(F_SV+F_SU)/2;  %equation(14)
+
+%%
+
+[Ud Sd Vd]=svd(DstBlk);
+Sd=diag(Sd)';
+
+F_LU=sqrt(sum(abs(Dif_U(1:CPF).*W(1:CPF))));
+F_LV=sqrt(sum(abs(Dif_V(1:CPF).*W(1:CPF))));
+
+FL=(F_LU+F_LV)/2; %equation(16)
+%%
+DiftR=abs(Sd-S_hat_U);%if it is similar it shows that the distortion is not structral
+DiftL=abs(Sd-S_hat_V);
+Q_SU=sqrt((sum((DiftR(1:CPF)).^2)));
+Q_SV=sqrt((sum((DiftL(1:CPF)).^2)));
+
+if (Q_SU==0 || Q_SV==0)
+    QRH=0;
+else
+    QRH=(2*Q_SU*Q_SV)/(Q_SU+Q_SV); %equation(18)    
+end
+h=4*(Dx);
+FR=1-exp(-QRH/h); % equation(19)
+

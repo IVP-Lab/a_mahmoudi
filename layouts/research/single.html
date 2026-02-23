@@ -1,0 +1,69 @@
+{{ define "main" }}
+<div class="relative flex min-h-screen flex-col bg-white dark:bg-background-dark group/design-root overflow-x-hidden">
+    <main class="flex-1 flex flex-col items-center">
+        <div class="w-full max-w-5xl px-6 md:px-10 py-10">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+                <a class="hover:text-primary" href="/">Home</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <span class="text-slate-900 dark:text-slate-200 font-medium">Research Interests</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="mb-16">
+                <h1 class="text-[#111418] dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-tight mb-4">
+                    Research Interests & Projects
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+                    {{ .Params.description | default "Research areas spanning image processing, video analysis, and related fields." }}
+                </p>
+            </div>
+
+            <!-- Research Categories Grid -->
+            <div class="space-y-16">
+                {{ with .Site.Data.research }}
+                {{ range .areas }}
+                <section class="flex flex-col md:flex-row gap-8 items-start border-l-4 border-primary/20 pl-6 py-2">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4 text-primary">
+                            <span class="material-symbols-outlined text-3xl">{{ .icon | default "science" }}</span>
+                            <h2 class="text-2xl font-bold text-[#111418] dark:text-white">{{ .title }}</h2>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            {{ .description }}
+                        </p>
+                        {{ with .topics }}
+                        <div class="flex flex-wrap gap-2">
+                            {{ range . }}
+                            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold rounded-full">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                        {{ with .tools }}
+                        <div class="grid md:grid-cols-2 gap-4 mt-6">
+                            {{ range . }}
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                                <h3 class="font-bold text-lg mb-1 text-primary">{{ .name }}</h3>
+                                {{ with .subtitle }}
+                                <p class="text-sm text-slate-500 mb-2 italic">{{ . }}</p>
+                                {{ end }}
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">{{ .description }}</p>
+                                {{ with .code }}
+                                <a class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white dark:bg-slate-700 rounded-lg text-xs font-semibold hover:bg-black transition-all" href="{{ . }}">
+                                    <span class="material-symbols-outlined text-sm">code</span>
+                                    Get Code
+                                </a>
+                                {{ end }}
+                            </div>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </section>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </main>
+</div>
+{{ end }}

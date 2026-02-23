@@ -1,0 +1,308 @@
+{{ define "main" }}
+<div class="relative flex min-h-screen flex-col bg-background-light dark:bg-background-dark">
+    <main class="mx-auto flex w-full max-w-7xl flex-col px-6 md:px-12 py-8">
+        <!-- Breadcrumbs -->
+        <nav class="mb-6 flex items-center gap-2 text-sm text-[#637288]">
+            <a class="hover:text-primary" href="/">Home</a>
+            <span class="material-symbols-outlined text-xs">chevron_right</span>
+            <a class="hover:text-primary" href="/courses/">Courses</a>
+            <span class="material-symbols-outlined text-xs">chevron_right</span>
+            <span class="text-[#111418] font-medium">{{ .Params.code }}: {{ .Title }}</span>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="mb-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div class="lg:col-span-2">
+                <h1 class="text-4xl font-black tracking-tight text-[#111418] mb-4">{{ .Params.code }}: {{ .Title }}</h1>
+                <div class="flex flex-wrap gap-4 text-sm mb-6">
+                    <span class="flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold">
+                        <span class="material-symbols-outlined text-base">calendar_today</span> {{ .Params.semester }}
+                    </span>
+                    {{ with .Params.credits }}
+                    <span class="flex items-center gap-1.5 bg-[#f0f2f4] text-[#637288] px-3 py-1 rounded-full font-medium">
+                        <span class="material-symbols-outlined text-base">school</span> {{ . }} Credits
+                    </span>
+                    {{ end }}
+                    {{ with .Params.location }}
+                    <span class="flex items-center gap-1.5 bg-[#f0f2f4] text-[#637288] px-3 py-1 rounded-full font-medium">
+                        <span class="material-symbols-outlined text-base">location_on</span> {{ . }}
+                    </span>
+                    {{ end }}
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
+                    <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">description</span> Course Description
+                    </h3>
+                    <div class="text-[#4b5563] leading-relaxed mb-4 prose max-w-none">
+                        {{ .Content }}
+                    </div>
+                    {{ with .Params.tags }}
+                    <div class="flex flex-wrap gap-2">
+                        {{ range . }}
+                        <span class="px-2 py-1 bg-background-light text-[#637288] text-xs rounded font-mono">#{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- Sticky Sidebar Logistics -->
+            <aside class="space-y-6 lg:sticky lg:top-24">
+                <div class="bg-primary text-white p-6 rounded-xl shadow-lg shadow-primary/20">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined">quick_reference</span> Quick Links
+                    </h3>
+                    <div class="space-y-3">
+                        {{ with .Params.syllabus }}
+                        <a href="{{ . }}" class="w-full flex items-center justify-between bg-white/20 hover:bg-white/30 p-3 rounded-lg font-bold transition-all text-sm group">
+                            <span class="flex items-center gap-3">
+                                <span class="material-symbols-outlined">download</span> Download Syllabus
+                            </span>
+                            <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        {{ end }}
+                        {{ with .Params.schedule }}
+                        <a href="{{ . }}" class="w-full flex items-center justify-between bg-white/20 hover:bg-white/30 p-3 rounded-lg font-bold transition-all text-sm group">
+                            <span class="flex items-center gap-3">
+                                <span class="material-symbols-outlined">event_available</span> Tentative Schedule
+                            </span>
+                            <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        {{ end }}
+                        {{ with .Params.github }}
+                        <a href="{{ . }}" target="_blank" class="w-full flex items-center justify-between bg-white/20 hover:bg-white/30 p-3 rounded-lg font-bold transition-all text-sm group">
+                            <span class="flex items-center gap-3">
+                                <span class="material-symbols-outlined">code</span> Sample Codes (GitHub)
+                            </span>
+                            <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        {{ end }}
+                        {{ with .Params.group }}
+                        <a href="{{ .url }}" target="_blank" class="w-full flex items-center justify-between bg-white/20 hover:bg-white/30 p-3 rounded-lg font-bold transition-all text-sm group">
+                            <span class="flex items-center gap-3">
+                                <span class="material-symbols-outlined">forum</span> {{ .name | default "Discussion Group" }}
+                            </span>
+                            <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        {{ end }}
+                    </div>
+                </div>
+
+                {{ with .Params.ta }}
+                <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-[#111418]">
+                        <span class="material-symbols-outlined text-primary">groups</span> Teaching Assistants
+                    </h3>
+                    <div class="space-y-4">
+                        {{ range . }}
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-primary/10 p-2 rounded-lg">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold">{{ .name }}</p>
+                                {{ with .email }}
+                                <p class="text-xs text-[#637288]">{{ . }}</p>
+                                {{ end }}
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ with $.Params.weekly_schedule }}
+                <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-[#111418]">
+                        <span class="material-symbols-outlined text-primary">schedule</span> Weekly Topics
+                    </h3>
+                    <p class="text-xs text-[#637288] mb-2">See full schedule below</p>
+                </div>
+                {{ end }}
+            </aside>
+        </div>
+
+        <!-- Weekly Schedule Table (Optional) -->
+        {{ with .Params.weekly_schedule }}
+        <div class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-[#111418] flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">format_list_bulleted</span> Weekly Schedule
+                </h2>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#f9fafb] border-b border-[#e5e7eb]">
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288]">Week</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288]">Topic & Lecture Title</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288] text-right">Materials</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#f0f2f4]">
+                        {{ range $index, $week := . }}
+                        <tr class="hover:bg-primary/5 transition-colors group">
+                            <td class="px-6 py-4 text-sm font-bold text-primary">{{ with $week.week }}{{ printf "%02d" . }}{{ else }}{{ printf "%02d" (add $index 1) }}{{ end }}</td>
+                            <td class="px-6 py-4">
+                                <p class="text-sm font-bold text-[#111418]">{{ $week.title }}</p>
+                                {{ with $week.subtitle }}
+                                <p class="text-xs text-[#637288]">{{ . }}</p>
+                                {{ end }}
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                {{ with $week.slides }}
+                                <a href="{{ . }}" class="text-primary hover:underline text-sm font-medium flex items-center gap-1 justify-end ml-auto">
+                                    <span class="material-symbols-outlined text-lg">download</span> Slides
+                                </a>
+                                {{ end }}
+                            </td>
+                        </tr>
+                        {{ end }}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Resources Section -->
+        {{ with .Params.resources }}
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-[#111418] mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">folder_open</span> Learning Resources
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {{ with .lectures }}
+                <!-- Lecture Slides Section -->
+                <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-red-100 rounded-lg">
+                            <span class="material-symbols-outlined text-red-600">picture_as_pdf</span>
+                        </div>
+                        <h3 class="font-bold text-[#111418]">Lecture Slides</h3>
+                    </div>
+                    <ul class="space-y-4 flex-grow">
+                        {{ range . }}
+                        <li class="flex items-start justify-between group">
+                            <div>
+                                <a href="{{ .url }}" class="text-sm text-[#4b5563] group-hover:text-primary cursor-pointer transition-colors">{{ .title }}</a>
+                                {{ with .description }}
+                                <p class="text-xs text-[#637288] mt-1">{{ . }}</p>
+                                {{ end }}
+                            </div>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+
+                {{ with .books }}
+                <!-- Recommended Reading Section -->
+                <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-blue-100 rounded-lg">
+                            <span class="material-symbols-outlined text-blue-600">menu_book</span>
+                        </div>
+                        <h3 class="font-bold text-[#111418]">Recommended Reading</h3>
+                    </div>
+                    <div class="space-y-4 flex-grow">
+                        {{ range . }}
+                        <div class="border-l-2 border-primary/30 pl-3">
+                            {{ if .url }}
+                            <a href="{{ .url }}" target="_blank" class="text-sm text-[#111418] font-medium leading-snug italic hover:text-primary">"{{ .title }}"</a>
+                            {{ else }}
+                            <p class="text-sm text-[#111418] font-medium leading-snug italic">"{{ .title }}"</p>
+                            {{ end }}
+                            <p class="text-[11px] text-[#637288] mt-1">{{ .author }}</p>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Homework Assignments Section -->
+        {{ with .Params.homeworks }}
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-[#111418] mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">assignment</span> Homework Assignments
+            </h2>
+            <div class="overflow-x-auto rounded-xl border border-[#e5e7eb] bg-white shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#f9fafb] border-b border-[#e5e7eb]">
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288]">Assignment</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288]">Due</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#637288] text-right">Files</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#f0f2f4]">
+                        {{ range . }}
+                        <tr class="hover:bg-primary/5 transition-colors group">
+                            <td class="px-6 py-4">
+                                <p class="text-sm font-bold text-[#111418]">{{ .title }}</p>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-[#637288]">{{ .due }}</td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex gap-3 justify-end">
+                                    {{ with .pdf }}
+                                    <a href="{{ . }}" class="text-primary hover:underline text-sm font-medium flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-base">description</span> PDF
+                                    </a>
+                                    {{ end }}
+                                    {{ with .data }}
+                                    <a href="{{ . }}" class="text-green-600 hover:underline text-sm font-medium flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-base">folder_zip</span> Data
+                                    </a>
+                                    {{ end }}
+                                </div>
+                            </td>
+                        </tr>
+                        {{ end }}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Scores Section -->
+        {{ with .Params.scores }}
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-[#111418] mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">leaderboard</span> Scores & Grades
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {{ range . }}
+                <a href="{{ .url }}" class="bg-white p-4 rounded-xl border border-[#e5e7eb] shadow-sm hover:border-primary transition-colors flex items-center gap-4 group">
+                    <div class="p-2 bg-amber-100 rounded-lg">
+                        <span class="material-symbols-outlined text-amber-600">grade</span>
+                    </div>
+                    <span class="text-sm font-medium text-[#111418] group-hover:text-primary">{{ .title }}</span>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <!-- Project Section -->
+        {{ with .Params.project }}
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-[#111418] mb-8 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">science</span> Final Project
+            </h2>
+            <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
+                {{ with .description }}
+                <p class="text-[#4b5563] leading-relaxed mb-4">{{ . }}</p>
+                {{ end }}
+                {{ with .guidelines }}
+                <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                    <span class="material-symbols-outlined">download</span> Download Project Guidelines
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </main>
+</div>
+{{ end }}

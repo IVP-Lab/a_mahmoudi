@@ -1,0 +1,102 @@
+---
+title: "Computer Architecture"
+code: "CmpArc"
+semester: "Spring 2012"
+level: "Undergraduate"
+description: "Computer architecture fundamentals including CPU design, memory systems, and instruction set architectures."
+
+ta:
+  - name: "Mr. Sina Aghasi"
+  - name: "Mr. Mohsen Fariabi"
+
+group:
+  name: "Yahoo Group"
+  url: "http://groups.yahoo.com/group/computer_arch_3902"
+
+resources:
+  lectures:
+    - title: "Lecture 1"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_1.pdf"
+    - title: "Lecture 2"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_2.pdf"
+    - title: "Lecture 3"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_3.pdf"
+    - title: "Lecture 4"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_4.pdf"
+    - title: "Lecture 5"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_5.pdf"
+    - title: "Lecture 6"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_6.pdf"
+    - title: "Lecture 7"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_7.pdf"
+    - title: "Lecture 8"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_8.pdf"
+    - title: "Lecture 9"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_9.pdf"
+    - title: "Division Sample"
+      url: "/files/courses/CmpArc_90_2/division_sample.pdf"
+    - title: "Lecture 10"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_10.pdf"
+    - title: "Lecture 11"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_11.pdf"
+    - title: "Lecture 12"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_12.pdf"
+    - title: "Lecture 13"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_13.pdf"
+    - title: "Lecture 14"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_14.pdf"
+    - title: "Lecture 15"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_15.pdf"
+    - title: "Lecture 16"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_16.pdf"
+    - title: "Lecture 17"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_17.pdf"
+    - title: "Lecture 18"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_18.pdf"
+    - title: "Lecture 19"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_19.pdf"
+    - title: "Lecture 20"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_20.pdf"
+    - title: "Lecture 21"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_21.pdf"
+    - title: "Lecture 22"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_22.pdf"
+    - title: "Lecture 23"
+      url: "/files/courses/CmpArc_90_2/CmpArc_90_2_23.pdf"
+
+homeworks:
+  - title: "Homework 1"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_1.pdf"
+  - title: "Homework 2"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_2.pdf"
+  - title: "Homework 3"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_3.pdf"
+  - title: "Homework 4"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_4.pdf"
+  - title: "Homework 5"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_5.pdf"
+  - title: "Homework 6"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_6.pdf"
+  - title: "Homework 7"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_7.pdf"
+    solution: "/files/courses/CmpArc_90_2/CmpArc_HWK_90_2_7_Sol.pdf"
+
+quizzes:
+  - title: "Quiz 2"
+    pdf: "/files/courses/CmpArc_90_2/CmpArc_90_2_quiz_2.pdf"
+    solution: "/files/courses/CmpArc_90_2/CmpArc_90_2_quiz_2_Sol.pdf"
+
+project:
+  description: "Course project"
+  guidelines: "/files/courses/CmpArc_90_2/CmpArc_Project_90_2_1.pdf"
+
+scores:
+  - title: "Final Scores"
+    url: "/files/courses/CmpArc_90_2/CmpArc_Fnl_90_2.pdf"
+  - title: "Final Exam Scores"
+    url: "/files/courses/CmpArc_90_2/CmpArc_Fnl_Scr_90_2.pdf"
+  - title: "Mid Term Scores"
+    url: "/files/courses/CmpArc_90_2/CmpArc_Mid_Scr_90_2.pdf"
+---
+
+Tutorial Class: Room 108, Wednesday, 12:00 to 14:00

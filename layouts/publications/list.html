@@ -1,0 +1,149 @@
+{{ define "main" }}
+<div class="relative flex min-h-screen w-full flex-col">
+    <main class="mx-auto w-full max-w-[1000px] px-6 py-12 flex-1">
+        <!-- Header Section -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-black tracking-tight text-[#111418] mb-4">Publications & Research Output</h1>
+            <p class="text-lg text-gray-500 max-w-2xl leading-relaxed">
+                Peer-reviewed journals, conference papers, and technical reports in image processing, video analysis, and related fields.
+            </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 border-b border-gray-100 pb-8">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterPubs('all')" id="filter-all" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold shadow-sm shadow-primary/20">All Types</button>
+                <button onclick="filterPubs('journal')" id="filter-journal" class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:border-primary/50 hover:text-primary text-sm font-medium transition-all">Journal Papers</button>
+                <button onclick="filterPubs('conference')" id="filter-conference" class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:border-primary/50 hover:text-primary text-sm font-medium transition-all">Conference Proceedings</button>
+            </div>
+        </div>
+
+        <!-- Publications List -->
+        <div class="space-y-16">
+            {{ $pubs := where .Site.RegularPages "Section" "publications" }}
+            {{ $journals := where $pubs ".Params.type" "journal" }}
+            {{ $conferences := where $pubs ".Params.type" "conference" }}
+
+            <!-- Section: Journal Papers -->
+            {{ if $journals }}
+            <section id="section-journal" class="pub-section">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-[#111418]">Journal Papers</h2>
+                    <div class="h-[1px] flex-1 bg-gray-100"></div>
+                    <span class="text-sm font-semibold text-gray-400 uppercase tracking-widest">Total: {{ len $journals }}</span>
+                </div>
+                <div class="space-y-8">
+                    {{ range sort $journals ".Params.year" "desc" }}
+                    <div class="group relative flex gap-6 p-4 -mx-4 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 pub-item" data-type="journal">
+                        <div class="hidden sm:flex flex-col items-center">
+                            <span class="text-lg font-black text-primary">{{ .Params.year }}</span>
+                            <div class="w-px h-full bg-primary/20 mt-2"></div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold leading-snug text-[#111418] mb-2 group-hover:text-primary transition-colors">
+                                {{ .Title }}
+                            </h3>
+                            <p class="text-sm text-gray-600 mb-2 leading-relaxed">
+                                {{ .Params.authors | safeHTML }}
+                            </p>
+                            <p class="text-sm italic text-gray-500 mb-4">
+                                {{ .Params.venue }}{{ with .Params.volume }}, vol. {{ . }}{{ end }}{{ with .Params.pages }}, pp. {{ . }}{{ end }}.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                {{ with .Params.pdf }}
+                                <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/5 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all" href="{{ . }}">
+                                    <span class="material-symbols-outlined text-base">picture_as_pdf</span> PDF
+                                </a>
+                                {{ end }}
+                                {{ with .Params.code }}
+                                <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-xs font-bold hover:bg-gray-200 transition-all" href="{{ . }}">
+                                    <span class="material-symbols-outlined text-base">code</span> Code
+                                </a>
+                                {{ end }}
+                                {{ with .Params.doi }}
+                                <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-xs font-bold hover:bg-gray-200 transition-all" href="https://doi.org/{{ . }}">
+                                    <span class="material-symbols-outlined text-base">link</span> DOI
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+
+            <!-- Section: Conference Proceedings -->
+            {{ if $conferences }}
+            <section id="section-conference" class="pub-section">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-[#111418]">Conference Proceedings</h2>
+                    <div class="h-[1px] flex-1 bg-gray-100"></div>
+                    <span class="text-sm font-semibold text-gray-400 uppercase tracking-widest">Total: {{ len $conferences }}</span>
+                </div>
+                <div class="space-y-8">
+                    {{ range sort $conferences ".Params.year" "desc" }}
+                    <div class="group relative flex gap-6 p-4 -mx-4 rounded-xl hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 pub-item" data-type="conference">
+                        <div class="hidden sm:flex flex-col items-center">
+                            <span class="text-lg font-black text-primary">{{ .Params.year }}</span>
+                            <div class="w-px h-full bg-primary/20 mt-2"></div>
+                        </div>
+                        <div class="flex-1">
+                            {{ with .Params.award }}
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-700 text-[10px] font-black uppercase tracking-wider">{{ . }}</span>
+                            </div>
+                            {{ end }}
+                            <h3 class="text-lg font-bold leading-snug text-[#111418] mb-2 group-hover:text-primary transition-colors">
+                                {{ .Title }}
+                            </h3>
+                            <p class="text-sm text-gray-600 mb-2 leading-relaxed">
+                                {{ .Params.authors | safeHTML }}
+                            </p>
+                            <p class="text-sm italic text-gray-500 mb-4">
+                                {{ .Params.venue }}{{ with .Params.location }}, {{ . }}{{ end }}.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                {{ with .Params.pdf }}
+                                <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/5 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all" href="{{ . }}">
+                                    <span class="material-symbols-outlined text-base">picture_as_pdf</span> PDF
+                                </a>
+                                {{ end }}
+                                {{ with .Params.code }}
+                                <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-xs font-bold hover:bg-gray-200 transition-all" href="{{ . }}">
+                                    <span class="material-symbols-outlined text-base">code</span> Code
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+        </div>
+    </main>
+</div>
+
+<script>
+function filterPubs(type) {
+    // Update button styles
+    document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+        if (btn.id === 'filter-' + type) {
+            btn.className = 'px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold shadow-sm shadow-primary/20';
+        } else {
+            btn.className = 'px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-600 hover:border-primary/50 hover:text-primary text-sm font-medium transition-all';
+        }
+    });
+
+    // Show/hide sections
+    if (type === 'all') {
+        document.querySelectorAll('.pub-section').forEach(s => s.style.display = 'block');
+    } else {
+        document.querySelectorAll('.pub-section').forEach(s => {
+            s.style.display = s.id === 'section-' + type ? 'block' : 'none';
+        });
+    }
+}
+</script>
+{{ end }}

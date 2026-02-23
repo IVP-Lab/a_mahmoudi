@@ -1,0 +1,36 @@
+<nav class="sticky top-0 z-50 w-full border-b border-[#e5e7eb] bg-white/80 backdrop-blur-md px-4 md:px-20 lg:px-40 py-3">
+    <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg text-white">
+                <span class="material-symbols-outlined block text-lg">school</span>
+            </div>
+            <h2 class="text-[#111418] text-lg font-bold tracking-tight">{{ .Site.Params.shortName }}</h2>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <div class="flex items-center gap-6">
+                <a class="{{ if eq .RelPermalink "/" }}text-[#111418] font-semibold{{ else }}text-[#4b5563] font-medium{{ end }} hover:text-primary transition-colors text-sm" href="/">Home</a>
+                <a class="{{ if hasPrefix .RelPermalink "/publications" }}text-[#111418] font-semibold{{ else }}text-[#4b5563] font-medium{{ end }} hover:text-primary transition-colors text-sm" href="/publications/">Publications</a>
+                <a class="{{ if hasPrefix .RelPermalink "/courses" }}text-[#111418] font-semibold{{ else }}text-[#4b5563] font-medium{{ end }} hover:text-primary transition-colors text-sm" href="/courses/">Teaching</a>
+                <a class="{{ if hasPrefix .RelPermalink "/research" }}text-[#111418] font-semibold{{ else }}text-[#4b5563] font-medium{{ end }} hover:text-primary transition-colors text-sm" href="/research/">Research</a>
+            </div>
+            {{ with .Site.Params.cvUrl }}
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-sm hover:bg-primary/90 transition-all" href="{{ . }}">
+                <span>CV (PDF)</span>
+                <span class="material-symbols-outlined text-sm">download</span>
+            </a>
+            {{ end }}
+        </div>
+        <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+        <div class="flex flex-col gap-3">
+            <a class="text-[#4b5563] hover:text-primary transition-colors text-sm font-medium px-2 py-1" href="/">Home</a>
+            <a class="text-[#4b5563] hover:text-primary transition-colors text-sm font-medium px-2 py-1" href="/publications/">Publications</a>
+            <a class="text-[#4b5563] hover:text-primary transition-colors text-sm font-medium px-2 py-1" href="/courses/">Teaching</a>
+            <a class="text-[#4b5563] hover:text-primary transition-colors text-sm font-medium px-2 py-1" href="/research/">Research</a>
+        </div>
+    </div>
+</nav>
