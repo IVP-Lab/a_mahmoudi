@@ -18,7 +18,7 @@ title = 'Ahmad Mahmoudi-Aznaveh'
   github = "https://github.com/a-mahmoudi"
   googleScholar = "https://scholar.google.com/citations?user=HlT_NN4AAAAJ&hl=en"
   # cvUrl = "/files/cv.pdf"
-  profileImage = "/images/profile.jpg"
+  profileImage = "images/profile.jpg"
 
 [menu]
   [[menu.main]]
