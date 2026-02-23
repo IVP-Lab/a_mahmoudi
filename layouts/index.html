@@ -28,13 +28,13 @@
             <div class="absolute -inset-4 bg-primary/5 rounded-[2.5rem] rotate-3 transition-transform group-hover:rotate-6"></div>
             <div class="relative aspect-[4/5] bg-cover bg-center rounded-[2rem] shadow-2xl overflow-hidden border-8 border-white" style='background-image: url("{{ (.Site.Params.profileImage | default "images/profile.jpg") | relURL }}");'>
             </div>
-            <div class="absolute -bottom-6 -right-6 p-4 bg-white rounded-2xl shadow-xl flex items-center gap-3">
-                <div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">verified</span>
+            <div class="absolute -bottom-4 -right-2 md:-bottom-6 md:-right-6 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-xl flex items-center gap-2 md:gap-3 max-w-[calc(100%-1rem)]">
+                <div class="size-8 md:size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                    <span class="material-symbols-outlined text-lg md:text-2xl">verified</span>
                 </div>
-                <div>
-                    <p class="text-xs text-gray-500 font-semibold uppercase">Affiliation</p>
-                    <p class="text-sm font-bold text-gray-900">{{ .Site.Params.university }}</p>
+                <div class="min-w-0">
+                    <p class="text-[10px] md:text-xs text-gray-500 font-semibold uppercase">Affiliation</p>
+                    <p class="text-xs md:text-sm font-bold text-gray-900 truncate">{{ .Site.Params.university }}</p>
                 </div>
             </div>
         </div>
@@ -72,12 +72,12 @@
 
             <!-- Research Highlights -->
             <section>
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-4 flex-1">
-                        <h2 class="text-2xl font-bold text-[#111418] whitespace-nowrap">Recent Publications</h2>
-                        <div class="h-px w-full bg-[#e5e7eb]"></div>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+                    <div class="flex items-center gap-4 flex-1 min-w-0">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#111418] whitespace-nowrap">Recent Publications</h2>
+                        <div class="h-px flex-1 bg-[#e5e7eb] hidden sm:block"></div>
                     </div>
-                    <a class="text-primary font-bold text-sm ml-4 whitespace-nowrap hover:underline" href="{{ "publications/" | relURL }}">See all publications</a>
+                    <a class="text-primary font-bold text-sm whitespace-nowrap hover:underline" href="{{ "publications/" | relURL }}">See all →</a>
                 </div>
                 <div class="space-y-6">
                     {{ $pubs := where .Site.RegularPages "Section" "publications" }}
