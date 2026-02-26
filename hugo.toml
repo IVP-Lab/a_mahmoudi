@@ -3,7 +3,7 @@ languageCode = 'en'
 title = 'Ahmad Mahmoudi-Aznaveh'
 
 [params]
-  author = "Ahmad Mahmoudi-Aznaveh"
+  author = "Ahmad Mahmoudi Aznaveh"
   shortName = "Dr. A. Mahmoudi"
   position = "Faculty Member"
   bio = "Cyberspace Research Center, Shahid Beheshti University. Research in Image/Video Processing, Digital Image Forensics, Watermarking, and Quality Assessment."
