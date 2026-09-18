@@ -6,12 +6,18 @@ level: "Graduate"
 description: "This is a demonstration course showing all available features in the course template."
 <!-- draft: true -->
 
+prerequisites: "Students are expected to have a basic understanding of Linear Algebra, Probability Theory, and Python programming."
+assessment: "15% Reading Notes, 35% Homework Assignments, 15% Midterm Exam, 35% Final Project."
+policies: "Please use the [Telegram Group](https://t.me/sample_course_group) for general discussion. For personal inquiries, email the TAs. Academic integrity will be strictly enforced."
+
 # Teaching Assistants
 ta:
   - name: "John Doe"
     email: "john.doe[at]example.com"
+    url: "https://johndoe.example.com"
   - name: "Jane Smith"
     email: "jane.smith[at]example.com"
+    url: "https://linkedin.com/in/janesmith"
 
 # Course Communication Group (can be Google Groups, Telegram, WhatsApp, etc.)
 group:
@@ -25,38 +31,57 @@ schedule: "/files/courses/SAMPLE/schedule.pdf"
 # GitHub Repository (optional)
 github: "https://github.com/username/sample-course"
 
-# Weekly Schedule (optional - for courses that have fixed weekly topics)
+# Course Schedule (Integrated)
 weekly_schedule:
-  - week: 1
+  - date: "Week 1 (Sep 3)"
     title: "Introduction to the Course"
     subtitle: "Overview, expectations, and getting started"
     slides: "/files/courses/SAMPLE/week01_slides.pdf"
-  - week: 2
+    materials: "[Lecture 0 - Course Introduction](/files/courses/SAMPLE/lecture00_introduction.pdf)\n[Reference Textbook](/files/courses/SAMPLE/textbook.pdf)"
+    events: "[Python Tutorial Notebook](/files/courses/SAMPLE/tutorial.ipynb)"
+  - date: "Week 2 (Sep 10)"
     title: "Fundamental Concepts"
     subtitle: "Core theory and definitions"
     slides: "/files/courses/SAMPLE/week02_slides.pdf"
-  - week: 3
+    materials: "[Lecture 1 - Mathematical Foundations](/files/courses/SAMPLE/lecture01_math.pdf)"
+    events: "Homework 1 **out**\n([PDF](/files/courses/SAMPLE/hw1.pdf) | [Data](/files/courses/SAMPLE/hw1_data.zip))"
+  - date: "Week 3 (Sep 17)"
     title: "Advanced Topics Part 1"
     subtitle: "Deep dive into methodology"
     slides: "/files/courses/SAMPLE/week03_slides.pdf"
-  - week: 4
+    materials: "[Lecture 2 - Core Concepts](/files/courses/SAMPLE/lecture02_core.pdf)\n[Supplementary Reading List](/files/courses/SAMPLE/reading_list.pdf)"
+    deadlines: "Homework 1 **due**"
+  - date: "Week 4 (Sep 24)"
     title: "Advanced Topics Part 2"
     subtitle: "Implementation strategies"
     slides: "/files/courses/SAMPLE/week04_slides.pdf"
-  - week: 5
+    materials: "[Lecture 3 - Applications](/files/courses/SAMPLE/lecture03_applications.pdf)"
+    events: "Homework 2 **out**\n([PDF](/files/courses/SAMPLE/hw2.pdf) | [Data](/files/courses/SAMPLE/hw2_data.zip))"
+  - date: "Week 5 (Oct 1)"
+    type: "discussion"
     title: "Mid-term Review"
     subtitle: "Exam preparation and Q&A"
-  - week: 6
+    events: "[MATLAB Examples](/files/courses/SAMPLE/examples.m)"
+  - date: "Week 6 (Oct 8)"
+    type: "exam"
+    title: "Midterm Exam"
+    subtitle: "In-class, open book"
+  - date: "Week 7 (Oct 15)"
     title: "Project Work"
     subtitle: "Hands-on project development"
     slides: "/files/courses/SAMPLE/week06_slides.pdf"
-  - week: 7
+    materials: "[Lecture 4 - Case Studies](/files/courses/SAMPLE/lecture04_cases.pdf)"
+    events: "Homework 3 **out** ([PDF](/files/courses/SAMPLE/hw3.pdf))\n[Project Starter Code](/files/courses/SAMPLE/starter_code.zip)"
+    deadlines: "Homework 2 **due**"
+  - date: "Week 8 (Oct 22)"
     title: "Guest Lecture"
     subtitle: "Industry perspectives"
-  - week: 8
+    materials: "[Lecture 5 - Advanced Topics](/files/courses/SAMPLE/lecture05_advanced.pdf)"
+  - date: "Week 9 (Oct 29)"
     title: "Final Review"
     subtitle: "Course summary and final exam prep"
     slides: "/files/courses/SAMPLE/week08_slides.pdf"
+    deadlines: "Homework 3 **due**\nFinal Project **due**"
 
 # Scores (exams, quizzes, etc.)
 scores:
@@ -71,70 +96,23 @@ scores:
   - title: "Final Grades"
     url: "/files/courses/SAMPLE/final_grades.pdf"
 
-# Homeworks
-homeworks:
-  - title: "Homework 1 - Basic Exercises"
-    pdf: "/files/courses/SAMPLE/hw1.pdf"
-    data: "/files/courses/SAMPLE/hw1_data.zip"
-    solution: "/files/courses/SAMPLE/hw1_solution.pdf"
-  - title: "Homework 2 - Implementation"
-    pdf: "/files/courses/SAMPLE/hw2.pdf"
-    data: "/files/courses/SAMPLE/hw2_data.zip"
-  - title: "Homework 3 - Research Paper Review"
-    pdf: "/files/courses/SAMPLE/hw3.pdf"
-
 # Project Information
 project:
   title: "Course Project - Build Your Own System"
   description: "/files/courses/SAMPLE/project_description.pdf"
   proposal: "/files/courses/SAMPLE/proposal_template.pdf"
   report: "/files/courses/SAMPLE/report_template.pdf"
-
-# Lecture Resources
-resources:
-  lectures:
-    - title: "Lecture 0 - Course Introduction"
-      url: "/files/courses/SAMPLE/lecture00_introduction.pdf"
-    - title: "Lecture 1 - Mathematical Foundations"
-      url: "/files/courses/SAMPLE/lecture01_math.pdf"
-    - title: "Lecture 2 - Core Concepts"
-      url: "/files/courses/SAMPLE/lecture02_core.pdf"
-    - title: "Lecture 3 - Applications"
-      url: "/files/courses/SAMPLE/lecture03_applications.pdf"
-    - title: "Lecture 4 - Case Studies"
-      url: "/files/courses/SAMPLE/lecture04_cases.pdf"
-    - title: "Lecture 5 - Advanced Topics"
-      url: "/files/courses/SAMPLE/lecture05_advanced.pdf"
-
-# Sample Codes
-sampleCodes:
-  - title: "Python Tutorial Notebook"
-    url: "/files/courses/SAMPLE/tutorial.ipynb"
-  - title: "MATLAB Examples"
-    url: "/files/courses/SAMPLE/examples.m"
-  - title: "Project Starter Code"
-    url: "/files/courses/SAMPLE/starter_code.zip"
-
-# Additional Resources (optional)
-additionalResources:
-  - title: "Reference Textbook (PDF)"
-    url: "/files/courses/SAMPLE/textbook.pdf"
-  - title: "Supplementary Reading List"
-    url: "/files/courses/SAMPLE/reading_list.pdf"
 ---
 
 This sample course demonstrates all available features in the course template including:
 
-- Teaching Assistants with contact information
+- Optional Prerequisites, Assessment, and Policies sections
+- Teaching Assistants with contact information and profile URLs
 - Communication group (supports various platforms)
-- Course syllabus and schedule
-- Weekly schedule with dates and topics
+- Course syllabus and schedule links
+- Integrated Course Schedule with dates, slides, materials, events, deadlines, and row coloring (exam/discussion)
 - GitHub repository link
 - Exam and quiz scores
-- Homeworks with PDF, data files, and solutions
-- Course project with templates
-- Lecture materials
-- Sample codes
-- Additional resources
+- Course project templates
 
 Use this as a reference when creating new course pages.
