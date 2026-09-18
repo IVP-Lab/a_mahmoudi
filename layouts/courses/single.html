@@ -248,17 +248,40 @@
         {{ with .Params.project }}
         <div class="mb-12">
             <h2 class="text-2xl font-bold text-[#111418] mb-8 flex items-center gap-3">
-                <span class="material-symbols-outlined text-primary">science</span> Final Project
+                <span class="material-symbols-outlined text-primary">science</span> {{ .title | default "Final Project" }}
             </h2>
             <div class="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm">
-                {{ with .description }}
-                <p class="text-[#4b5563] leading-relaxed mb-4">{{ . }}</p>
-                {{ end }}
-                {{ with .guidelines }}
-                <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
-                    <span class="material-symbols-outlined">download</span> Download Project Guidelines
-                </a>
-                {{ end }}
+                <div class="flex flex-col gap-4">
+                    {{ with .description }}
+                    {{ if or (strings.HasPrefix . "http") (strings.HasPrefix . "/") }}
+                    <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                        <span class="material-symbols-outlined">description</span> Download Project Description
+                    </a>
+                    {{ else }}
+                    <div class="prose prose-sm max-w-none text-[#4b5563]">
+                        {{ . | markdownify }}
+                    </div>
+                    {{ end }}
+                    {{ end }}
+                    
+                    {{ with .proposal }}
+                    <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                        <span class="material-symbols-outlined">description</span> Download Proposal Template
+                    </a>
+                    {{ end }}
+
+                    {{ with .report }}
+                    <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                        <span class="material-symbols-outlined">description</span> Download Report Template
+                    </a>
+                    {{ end }}
+
+                    {{ with .guidelines }}
+                    <a href="{{ . }}" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                        <span class="material-symbols-outlined">download</span> Download Project Guidelines
+                    </a>
+                    {{ end }}
+                </div>
             </div>
         </div>
         {{ end }}
