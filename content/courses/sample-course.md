@@ -37,31 +37,46 @@ weekly_schedule:
     title: "Introduction to the Course"
     subtitle: "Overview, expectations, and getting started"
     slides: "/files/courses/SAMPLE/week01_slides.pdf"
-    materials: "[Lecture 0 - Course Introduction](/files/courses/SAMPLE/lecture00_introduction.pdf)\n[Reference Textbook](/files/courses/SAMPLE/textbook.pdf)"
-    events: "[Python Tutorial Notebook](/files/courses/SAMPLE/tutorial.ipynb)"
+    materials: |
+      - [Lecture 0 - Course Introduction](/files/courses/SAMPLE/lecture00_introduction.pdf)
+      - [Reference Textbook](/files/courses/SAMPLE/textbook.pdf)
+    events: |
+      - [Python Tutorial Notebook](/files/courses/SAMPLE/tutorial.ipynb)
   - date: "Week 2 (Sep 10)"
     title: "Fundamental Concepts"
     subtitle: "Core theory and definitions"
     slides: "/files/courses/SAMPLE/week02_slides.pdf"
-    materials: "[Lecture 1 - Mathematical Foundations](/files/courses/SAMPLE/lecture01_math.pdf)"
-    events: "Homework 1 **out**\n([PDF](/files/courses/SAMPLE/hw1.pdf) | [Data](/files/courses/SAMPLE/hw1_data.zip))"
+    materials: |
+      - [Lecture 1 - Mathematical Foundations](/files/courses/SAMPLE/lecture01_math.pdf)
+    events: |
+      Homework 1 **out**
+      - [PDF](/files/courses/SAMPLE/hw1.pdf)
+      - [Data](/files/courses/SAMPLE/hw1_data.zip)
   - date: "Week 3 (Sep 17)"
     title: "Advanced Topics Part 1"
     subtitle: "Deep dive into methodology"
     slides: "/files/courses/SAMPLE/week03_slides.pdf"
-    materials: "[Lecture 2 - Core Concepts](/files/courses/SAMPLE/lecture02_core.pdf)\n[Supplementary Reading List](/files/courses/SAMPLE/reading_list.pdf)"
-    deadlines: "Homework 1 **due**"
+    materials: |
+      - [Lecture 2 - Core Concepts](/files/courses/SAMPLE/lecture02_core.pdf)
+      - [Supplementary Reading List](/files/courses/SAMPLE/reading_list.pdf)
+    deadlines: |
+      - Homework 1 **due**
   - date: "Week 4 (Sep 24)"
     title: "Advanced Topics Part 2"
     subtitle: "Implementation strategies"
     slides: "/files/courses/SAMPLE/week04_slides.pdf"
-    materials: "[Lecture 3 - Applications](/files/courses/SAMPLE/lecture03_applications.pdf)"
-    events: "Homework 2 **out**\n([PDF](/files/courses/SAMPLE/hw2.pdf) | [Data](/files/courses/SAMPLE/hw2_data.zip))"
+    materials: |
+      - [Lecture 3 - Applications](/files/courses/SAMPLE/lecture03_applications.pdf)
+    events: |
+      Homework 2 **out**
+      - [PDF](/files/courses/SAMPLE/hw2.pdf)
+      - [Data](/files/courses/SAMPLE/hw2_data.zip)
   - date: "Week 5 (Oct 1)"
     type: "discussion"
     title: "Mid-term Review"
     subtitle: "Exam preparation and Q&A"
-    events: "[MATLAB Examples](/files/courses/SAMPLE/examples.m)"
+    events: |
+      - [MATLAB Examples](/files/courses/SAMPLE/examples.m)
   - date: "Week 6 (Oct 8)"
     type: "exam"
     title: "Midterm Exam"
@@ -70,18 +85,26 @@ weekly_schedule:
     title: "Project Work"
     subtitle: "Hands-on project development"
     slides: "/files/courses/SAMPLE/week06_slides.pdf"
-    materials: "[Lecture 4 - Case Studies](/files/courses/SAMPLE/lecture04_cases.pdf)"
-    events: "Homework 3 **out** ([PDF](/files/courses/SAMPLE/hw3.pdf))\n[Project Starter Code](/files/courses/SAMPLE/starter_code.zip)"
-    deadlines: "Homework 2 **due**"
+    materials: |
+      - [Lecture 4 - Case Studies](/files/courses/SAMPLE/lecture04_cases.pdf)
+    events: |
+      Homework 3 **out**
+      - [PDF](/files/courses/SAMPLE/hw3.pdf)
+      - [Project Starter Code](/files/courses/SAMPLE/starter_code.zip)
+    deadlines: |
+      - Homework 2 **due**
   - date: "Week 8 (Oct 22)"
     title: "Guest Lecture"
     subtitle: "Industry perspectives"
-    materials: "[Lecture 5 - Advanced Topics](/files/courses/SAMPLE/lecture05_advanced.pdf)"
+    materials: |
+      - [Lecture 5 - Advanced Topics](/files/courses/SAMPLE/lecture05_advanced.pdf)
   - date: "Week 9 (Oct 29)"
     title: "Final Review"
     subtitle: "Course summary and final exam prep"
     slides: "/files/courses/SAMPLE/week08_slides.pdf"
-    deadlines: "Homework 3 **due**\nFinal Project **due**"
+    deadlines: |
+      - Homework 3 **due**
+      - Final Project **due**
 
 # Scores (exams, quizzes, etc.)
 scores:
