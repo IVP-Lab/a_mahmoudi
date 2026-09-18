@@ -33,7 +33,7 @@
                     <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">description</span> Course Description
                     </h3>
-                    <div class="text-[#4b5563] leading-relaxed mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary/80 [&_p]:mb-3">
+                    <div class="text-[#4b5563] leading-relaxed mb-4 prose max-w-none prose-a:text-primary hover:prose-a:text-primary/80">
                         {{ .Content }}
                     </div>
                     {{ with .Params.tags }}
@@ -51,7 +51,7 @@
                     <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">verified</span> Prerequisites
                     </h3>
-                    <div class="text-[#4b5563] leading-relaxed text-sm [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary/80 [&_p]:mb-2">
+                    <div class="text-[#4b5563] leading-relaxed prose max-w-none prose-sm prose-a:text-primary hover:prose-a:text-primary/80">
                         {{ . | markdownify }}
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">pie_chart</span> Assessment
                     </h3>
-                    <div class="text-[#4b5563] leading-relaxed text-sm [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary/80 [&_p]:mb-2">
+                    <div class="text-[#4b5563] leading-relaxed prose max-w-none prose-sm prose-a:text-primary hover:prose-a:text-primary/80">
                         {{ . | markdownify }}
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">policy</span> Policies
                     </h3>
-                    <div class="text-[#4b5563] leading-relaxed text-sm [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary/80 [&_p]:mb-2">
+                    <div class="text-[#4b5563] leading-relaxed prose max-w-none prose-sm prose-a:text-primary hover:prose-a:text-primary/80">
                         {{ . | markdownify }}
                     </div>
                 </div>
@@ -198,21 +198,21 @@
                             </td>
                             <td class="px-6 py-4 text-sm text-[#4b5563] align-top">
                                 {{ with $item.materials }}
-                                <div class="prose prose-sm max-w-none text-[#4b5563] prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                                <div class="prose prose-sm max-w-none text-[#4b5563] prose-a:text-primary hover:prose-a:text-primary/80">
                                     {{ . | markdownify }}
                                 </div>
                                 {{ end }}
                             </td>
                             <td class="px-6 py-4 text-sm text-[#4b5563] align-top">
                                 {{ with $item.events }}
-                                <div class="prose prose-sm max-w-none text-[#4b5563] prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                                <div class="prose prose-sm max-w-none text-[#4b5563] prose-a:text-primary hover:prose-a:text-primary/80">
                                     {{ . | markdownify }}
                                 </div>
                                 {{ end }}
                             </td>
                             <td class="px-6 py-4 text-sm text-red-600 font-medium align-top">
                                 {{ with $item.deadlines }}
-                                <div class="prose prose-sm max-w-none text-red-600 prose-a:text-red-700 prose-a:underline">
+                                <div class="prose prose-sm max-w-none text-red-600 prose-a:text-red-700 hover:prose-a:text-red-800">
                                     {{ . | markdownify }}
                                 </div>
                                 {{ end }}
