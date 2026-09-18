@@ -4,7 +4,7 @@ code: "SAMPLE"
 semester: "Fall 2025"
 level: "Graduate"
 description: "This is a demonstration course showing all available features in the course template."
-draft: true
+<!-- draft: true -->
 
 # Teaching Assistants
 ta:
